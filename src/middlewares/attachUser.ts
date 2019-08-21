@@ -1,9 +1,8 @@
-import { ContextMessageUpdate } from 'telegraf';
-import { report } from '../helpers/report';
-import { bot } from '../helpers';
+import { SceneContextMessageUpdate } from 'telegraf';
 import { User } from '../entities';
+import { logger } from '../helpers/logger';
 
-export async function attachUser(ctx: ContextMessageUpdate, next?: () => any) {
+export async function attachUser(ctx: SceneContextMessageUpdate, next?: () => any) {
   if (!next) {
     return;
   }
@@ -11,7 +10,7 @@ export async function attachUser(ctx: ContextMessageUpdate, next?: () => any) {
     if (!ctx.from) {
       return;
     }
-    let user = await User.findOne(ctx.from.id);
+    let user = await User.findOne({ where: { tgId: ctx.from.id } });
     if (!user) {
       user = new User();
       user.tgId = ctx.from.id;
@@ -22,7 +21,7 @@ export async function attachUser(ctx: ContextMessageUpdate, next?: () => any) {
     await user.save();
     ctx.dbUser = user;
   } catch (e) {
-    await report(bot, e);
+    await logger.logError(e);
   }
   next();
 }

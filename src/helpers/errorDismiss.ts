@@ -11,11 +11,5 @@ export function checkIfErrorDismissable(error: Error) {
     'message not found',
     'bot was blocked',
   ];
-  let dismissable = false;
-  dismissableMessages.forEach(message => {
-    if (error.message.indexOf(message) > -1) {
-      dismissable = true;
-    }
-  });
-  return dismissable;
+  return dismissableMessages.includes(error.message);
 }

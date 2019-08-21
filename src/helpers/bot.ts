@@ -1,14 +1,13 @@
-import Telegraf, { ContextMessageUpdate } from 'telegraf';
+import Telegraf, { SceneContextMessageUpdate } from 'telegraf';
 import { User } from 'telegram-typings';
-import { report } from './report';
 
-const { BOT_TOKEN, USERNAME, ADMIN_ID } = process.env;
+const { BOT_TOKEN, BOT_USERNAME, ADMIN_ID } = process.env;
 if (!BOT_TOKEN) {
   console.error('No bot token specified!');
   process.exit(1);
 }
 
-if (!USERNAME) {
+if (!BOT_USERNAME) {
   console.error('No bot username specified!');
   process.exit(1);
 }
@@ -19,13 +18,10 @@ if (!ADMIN_ID) {
 }
 
 // @ts-ignore
-export const bot: Telegraf<ContextMessageUpdate> = new Telegraf(BOT_TOKEN, { username: USERNAME });
+export const bot: Telegraf<SceneContextMessageUpdate> = new Telegraf(BOT_TOKEN, {
+  username: BOT_USERNAME,
+});
 
 bot.telegram.getMe().then((botInfo: User) => {
   console.log(`Logged in as @${botInfo.username}`);
-});
-
-bot.catch((err: Error) => {
-  report(bot, err)
-    .catch();
 });
