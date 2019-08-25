@@ -1,6 +1,4 @@
-import { browserPromise } from '../../helpers/browserPromise';
-import { Selectors } from '../../helpers/selectors';
-import { getRandomInt } from '../../helpers/getRandomInt';
+import { browserPromise, Selectors, getRandomInt } from '../../helpers';
 
 export async function loginAudioblocks() {
   const { AUDIOBLOCKS_LOGIN, AUDIOBLOCKS_PASS } = process.env;

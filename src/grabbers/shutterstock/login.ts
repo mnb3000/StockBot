@@ -1,6 +1,4 @@
-import { browserPromise } from '../../helpers/browserPromise';
-import { Selectors } from '../../helpers/selectors';
-import { getRandomInt } from '../../helpers/getRandomInt';
+import { browserPromise, Selectors, getRandomInt } from '../../helpers';
 
 export async function loginShutterstock() {
   const { SHUTTER_LOGIN, SHUTTER_PASS } = process.env;

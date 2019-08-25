@@ -1,6 +1,6 @@
 import { SceneContextMessageUpdate } from 'telegraf';
 import { User } from '../entities';
-import { logger } from '../helpers/logger';
+import { logger } from '../helpers';
 
 export async function attachUser(ctx: SceneContextMessageUpdate, next?: () => any) {
   if (!next) {

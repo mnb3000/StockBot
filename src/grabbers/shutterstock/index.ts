@@ -1,7 +1,5 @@
-import { browserPromise } from '../../helpers/browserPromise';
+import { browserPromise, logger, Selectors } from '../../helpers';
 import { isShutterstockLoggedIn } from './checkLogin';
-import { logger } from '../../helpers/logger';
-import { Selectors } from '../../helpers/selectors';
 
 export async function downloadShutterstockImage(url: string) {
   const browser = await browserPromise;
