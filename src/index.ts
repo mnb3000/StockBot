@@ -3,10 +3,14 @@ import { session } from 'telegraf';
 import { bot, bootstrapDatabase } from './helpers';
 import { attachUser } from './middlewares/attachUser';
 import { logger } from './helpers/logger';
+import { loginShutterstock } from './grabbers/shuttestock/login';
 
 async function main() {
   // DB Setup
   await bootstrapDatabase();
+
+  // Stock login
+  await loginShutterstock();
 
   // Middlewares
   bot.use(attachUser);
@@ -18,6 +22,7 @@ async function main() {
   });
 
   await bot.launch();
+  console.log('Bot started!');
 }
 
 main()

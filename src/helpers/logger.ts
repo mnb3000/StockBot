@@ -38,6 +38,7 @@ class Logger {
     } catch (e) {
       console.error(`Unable to log message to channel:\n${text}`);
     }
+    console.log(text.replace(/<[a-z0-9/ =".:?]+>/g, '').replace(/\n/g, ' '));
   }
 
   private async logInfo() {
