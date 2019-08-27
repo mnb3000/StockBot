@@ -1,16 +1,21 @@
 import 'reflect-metadata';
 import { session } from 'telegraf';
-import { bot, bootstrapDatabase, logger } from './helpers';
+import {
+  bot, bootstrapDatabase, logger, createDownloadFolders,
+} from './helpers';
 import { attachUser } from './middlewares/attachUser';
-import { loginShutterstock, loginStoryblocks } from './grabbers';
+import { downloadShutterstockImage, loginShutterstock, loginStoryblocks } from './grabbers';
 
 async function main() {
   // DB Setup
   await bootstrapDatabase();
 
+  // Folder setup
+  await createDownloadFolders();
+
   // Stock login
-  // await loginShutterstock();
-  await loginStoryblocks();
+  await Promise.all([/* loginStoryblocks(), */loginShutterstock()]);
+  console.log(await downloadShutterstockImage('https://www.shutterstock.com/ru/image-vector/hand-drawn-beautiful-cute-summer-girl-1068852989'));
 
   // Middlewares
   bot.use(attachUser);
