@@ -16,6 +16,8 @@ export enum Selectors {
   STORYBLOCKS_ACCOUNT_BUTTON = '.account-member',
   STORYBLOCKS_MEMBER_LIBRARY = '.unlimitedIcon',
   STORYBLOCKS_DOWNLOAD_BUTTON = '.memberDownloadCta-cta',
+  STORYBLOCKS_IMAGE_URL = 'meta[property="og:image"]',
+  STORYBLOCKS_EPS = '#EPS',
   AUDIOBLOCKS_AUDIO_URL = 'meta[property="og:audio:url"]',
   VIDEOBLOCKS_VIDEO_URL = 'meta[property="og:video:url"]',
   VIDEOBLOCKS_HDMP4 = '#HDMP4',

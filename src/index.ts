@@ -7,6 +7,7 @@ import { attachUser } from './middlewares/attachUser';
 import {
   downloadAudioblocksAudio,
   downloadShutterstockImage,
+  downloadStoryblocksImage,
   downloadVideoblocksVideo,
   loginShutterstock,
   loginStoryblocks,
@@ -23,7 +24,8 @@ async function main() {
   await Promise.all([loginStoryblocks()/* , loginShutterstock() */]);
   // console.log(await downloadShutterstockImage('https://www.shutterstock.com/ru/image-vector/hand-drawn-beautiful-cute-summer-girl-1068852989'));
   // console.log(await downloadAudioblocksAudio('https://www.audioblocks.com/stock-audio/creepy-low-atmosphere-ambiance.html'));
-  console.log(await downloadVideoblocksVideo('https://www.videoblocks.com/video/aerial-view-of-bali-at-sunset-popular-summer-beach-in-indonesia-with-indian-ocean-and-view-on-the-bay-with-yachts-b0fe_klleliuzt1sjo'));
+  // console.log(await downloadVideoblocksVideo('https://www.videoblocks.com/video/aerial-view-of-bali-at-sunset-popular-summer-beach-in-indonesia-with-indian-ocean-and-view-on-the-bay-with-yachts-b0fe_klleliuzt1sjo'));
+  console.log(await downloadStoryblocksImage('https://www.storyblocks.com/stock-image/sunset-over-rocky-sea-coast-b8jw0p_1mj9znd4ty'));
 
   // Middlewares
   bot.use(attachUser);
