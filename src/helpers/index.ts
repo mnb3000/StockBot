@@ -6,3 +6,4 @@ export * from './getRandomInt';
 export * from './selectors';
 export * from './createDownloadFolders';
 export * from './waitUntilFileIsCreated';
+export * from './strings';

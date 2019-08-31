@@ -14,4 +14,7 @@ export class User extends UuidAbstract {
 
   @Column({ nullable: true })
   username?: string;
+
+  @Column({ default: false })
+  isAuthorized!: boolean;
 }

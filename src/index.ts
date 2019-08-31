@@ -4,14 +4,8 @@ import {
   bot, bootstrapDatabase, logger, createDownloadFolders,
 } from './helpers';
 import { attachUser } from './middlewares/attachUser';
-import {
-  downloadAudioblocksAudio,
-  downloadShutterstockImage,
-  downloadStoryblocksImage,
-  downloadVideoblocksVideo,
-  loginShutterstock,
-  loginStoryblocks,
-} from './grabbers';
+import { loginShutterstock, loginStoryblocks } from './grabbers';
+import { stage } from './middlewares/stage';
 
 async function main() {
   // DB Setup
@@ -21,15 +15,20 @@ async function main() {
   await createDownloadFolders();
 
   // Stock login
-  await Promise.all([loginStoryblocks()/* , loginShutterstock() */]);
-  // console.log(await downloadShutterstockImage('https://www.shutterstock.com/ru/image-vector/hand-drawn-beautiful-cute-summer-girl-1068852989'));
-  // console.log(await downloadAudioblocksAudio('https://www.audioblocks.com/stock-audio/creepy-low-atmosphere-ambiance.html'));
-  // console.log(await downloadVideoblocksVideo('https://www.videoblocks.com/video/aerial-view-of-bali-at-sunset-popular-summer-beach-in-indonesia-with-indian-ocean-and-view-on-the-bay-with-yachts-b0fe_klleliuzt1sjo'));
-  console.log(await downloadStoryblocksImage('https://www.storyblocks.com/stock-image/sunset-over-rocky-sea-coast-b8jw0p_1mj9znd4ty'));
+  await Promise.all([loginStoryblocks(), loginShutterstock()]);
 
   // Middlewares
   bot.use(attachUser);
   bot.use(session());
+  bot.use(stage.middleware());
+
+  // Start command
+  bot.command('start', ctx => ctx.scene.enter('auth'));
+  bot.on('message', ctx => {
+    if (!ctx.scene.current) {
+      ctx.scene.enter('auth');
+    }
+  });
 
   // Error Handling
   bot.catch((err: Error) => {

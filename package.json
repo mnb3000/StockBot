@@ -34,7 +34,7 @@
     "puppeteer": "^1.19.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^4.0.9",
-    "telegraf": "mnb3000/telegraf",
+    "telegraf": "telegraf/telegraf#develop",
     "telegram-typings": "^4.0.0-beta",
     "typeorm": "^0.2.18"
   }
