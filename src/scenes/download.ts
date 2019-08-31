@@ -1,5 +1,5 @@
 import { BaseScene } from 'telegraf';
-import { Strings } from '../helpers';
+import { logger, Strings } from '../helpers';
 import {
   downloadAudioblocksAudio,
   downloadShutterstockImage,
@@ -35,5 +35,11 @@ downloadScene.on('message', async ctx => {
     await ctx.replyWithMarkdown(Strings.DOWNLOAD_INVALID_URL);
     return;
   }
-  await ctx.replyWithDocument({ source: filePath });
+  try {
+    await ctx.replyWithDocument({ source: filePath });
+    logger.incrementCommand();
+  } catch (e) {
+    await logger.logError(e);
+    await ctx.replyWithMarkdown(Strings.DOWNLOAD_FAIL);
+  }
 });

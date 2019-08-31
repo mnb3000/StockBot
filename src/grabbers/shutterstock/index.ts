@@ -51,6 +51,7 @@ export async function downloadShutterstockImage(url: string): Promise<string | u
   const filePath = `${shutterDownloadFolderPath}/${fileName}`;
   await page.close();
   await waitUntilFileIsCreated(filePath);
+  logger.incrementDownloads();
   return filePath;
 }
 

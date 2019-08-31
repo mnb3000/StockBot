@@ -48,6 +48,7 @@ export async function downloadStoryblocksImage(url: string): Promise<string | un
   await page.waitFor(5000);
   await page.close();
   await waitUntilFileIsCreated(filePath);
+  logger.incrementDownloads();
   return filePath;
 }
 
