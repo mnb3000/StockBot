@@ -10,8 +10,8 @@ export async function downloadShutterstockImage(url: string): Promise<string | u
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 720 });
   const res = await page.goto(url);
-  await page.waitFor(Selectors.SHUTTER_CONTENT_PAGE);
-  if (!res || !res.ok()) {
+  const content = await page.$(Selectors.SHUTTER_CONTENT_PAGE);
+  if (!res || !res.ok() || !content) {
     await logger.logError(new Error('Invalid shutterstock url!'));
     await page.close();
     return undefined;

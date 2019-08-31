@@ -10,8 +10,8 @@ export async function downloadAudioblocksAudio(url: string): Promise<string | un
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 720 });
   const res = await page.goto(url);
-  await page.waitFor(Selectors.STORYBLOCKS_CONTENT_PAGE);
-  if (!res || !res.ok()) {
+  const content = await page.$(Selectors.STORYBLOCKS_CONTENT_PAGE);
+  if (!res || !res.ok() || !content) {
     await logger.logError(new Error('Invalid audioblocks url!'));
     await page.close();
     return undefined;

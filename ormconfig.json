@@ -4,7 +4,6 @@
   "entities": ["src/entities/index.ts"],
   "synchronize": true,
   "logger": "advanced-console",
-  "logging": "all",
-  "dropSchema": true,
+  "logging": "error",
   "cache": true
 }
