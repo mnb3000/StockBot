@@ -41,7 +41,7 @@ export async function downloadShutterstockImage(url: string): Promise<string | u
   });
   await page.click(Selectors.SHUTTER_DOWNLOAD_CONFIRM_BUTTON);
   await page.waitFor(Selectors.SHUTTER_MANUAL_DOWNLOAD_BUTTON);
-  await page.waitFor(2000);
+  await page.waitFor(5000);
   const fileLink = await page.$eval(Selectors.SHUTTER_MANUAL_DOWNLOAD_BUTTON, link => link.getAttribute('href'));
   if (!fileLink) {
     await page.close();

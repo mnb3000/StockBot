@@ -12,4 +12,11 @@ export enum Selectors {
   STORYBLOCKS_PASS_FIELD = '#password',
   STORYBLOCKS_LOGIN_BUTTON = 'button[type=submit]',
   STORYBLOCKS_HOME = '#imageHomepage',
+  STORYBLOCKS_CONTENT_PAGE = '.stockItemDetails',
+  STORYBLOCKS_ACCOUNT_BUTTON = '.account-member',
+  STORYBLOCKS_MEMBER_LIBRARY = '.unlimitedIcon',
+  STORYBLOCKS_DOWNLOAD_BUTTON = '.memberDownloadCta-cta',
+  AUDIOBLOCKS_AUDIO_URL = 'meta[property="og:audio:url"]',
+  VIDEOBLOCKS_VIDEO_URL = 'meta[property="og:video:url"]',
+  VIDEOBLOCKS_HDMP4 = '#HDMP4',
 }
