@@ -9,3 +9,5 @@ You need [Node.js](https://nodejs.org/) (>= 10) to run this bot.
 3. Install dependencies via `yarn install`.
 4. Copy `.env.sample` to `.env` and edit it.
 5. Start the bot via `yarn start` (or start the bot with live reload via `yarn dev`)
+
+You can also start the bot via pm2 (`yarn start_daemon`) It will automatically restart each time it crashes and every day at **00:00** local time
