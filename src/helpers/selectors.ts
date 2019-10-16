@@ -2,7 +2,7 @@ export enum Selectors {
   SHUTTER_LOGIN_FIELD = '#login-username',
   SHUTTER_PASS_FIELD = '#login-password',
   SHUTTER_LOGIN_BUTTON = '#login',
-  SHUTTER_FOOTER = '#site-footer',
+  SHUTTER_FOOTER = 'footer[role="contentinfo"]',
   SHUTTER_CONTENT_PAGE = '#content,.body-content',
   SHUTTER_FILE_ID = '.product-id',
   SHUTTER_DOWNLOAD_BUTTON = '.prod-download-btn',
