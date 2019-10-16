@@ -20,7 +20,7 @@ class Logger {
 
   private downloads = 0;
 
-  private async logToChannel(text: string) {
+  async logToChannel(text: string) {
     try {
       const telegram = this.bot
         ? this.bot.telegram

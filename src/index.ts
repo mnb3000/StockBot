@@ -6,6 +6,7 @@ import {
 import { attachUser } from './middlewares/attachUser';
 import { loginShutterstock, loginStoryblocks } from './grabbers';
 import { stage } from './middlewares/stage';
+import { setupAutoRestart } from './helpers/autoRestart';
 
 async function main() {
   // DB Setup
@@ -13,6 +14,8 @@ async function main() {
 
   // Folder setup
   await createDownloadFolders();
+
+  await setupAutoRestart();
 
   // Stock login
   await Promise.all([loginStoryblocks(), loginShutterstock()]);
